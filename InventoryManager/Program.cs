@@ -1,6 +1,7 @@
 namespace InventoryManager
 {
     using InventoryManager_Data;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     public class Program
     {
@@ -8,11 +9,10 @@ namespace InventoryManager
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
-
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
                ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+            builder.Services.AddControllersWithViews(options => { options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); });
 
             builder.Services.AddDbContext<InventoryManagerDbContext>(options =>
                 options.UseSqlServer(connectionString));

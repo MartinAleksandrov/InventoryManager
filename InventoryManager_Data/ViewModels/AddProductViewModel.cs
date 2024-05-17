@@ -1,29 +1,24 @@
-﻿namespace InventoryManager_Data.Models
+﻿namespace InventoryManager_Data.ViewModels
 {
     using System.ComponentModel.DataAnnotations;
     using static InventoryManager_Common.GlobalConstants.ProductConstants;
-    public class Product
+    public class AddProductViewModel
     {
-        public Product()
-        {
-            Id = Guid.NewGuid();
-        }
-
-        [Key]
         public Guid Id { get; set; }
 
         [Required]
-        [MaxLength(ProductNameMaxLength)]
+        [StringLength(ProductNameMaxLength,MinimumLength =ProductNameMinLength)]
         public string Name { get; set; } = string.Empty;
 
         [Required]
-        [MaxLength(ProductPriceMaxLength)]
+        [Range(ProductPriceMinLength,ProductPriceMaxLength)]
         public decimal Price { get; set; }
 
         [Required]
-        [MaxLength(SupplierNameMaxLength)]
+        [StringLength(SupplierNameMaxLength, MinimumLength = SupplierNameMinLength)]
         public string Supplier { get; set; } = string.Empty;
 
+        [Required]
         public int Count { get; set; }
     }
 }

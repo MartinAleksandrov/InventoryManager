@@ -1,6 +1,8 @@
 namespace InventoryManager
 {
     using InventoryManager_Data;
+    using InventoryManager_Services;
+    using InventoryManager_Services.Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     public class Program
@@ -12,7 +14,11 @@ namespace InventoryManager
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
                ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
+            builder.Services.AddScoped<IProductService, ProductService>();
+
             builder.Services.AddControllersWithViews(options => { options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); });
+
+
 
             builder.Services.AddDbContext<InventoryManagerDbContext>(options =>
                 options.UseSqlServer(connectionString));

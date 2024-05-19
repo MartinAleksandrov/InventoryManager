@@ -1,7 +1,7 @@
-﻿@model IEnumerable<AllProductsViewModel>
+﻿@model List<AllProductsViewModel>
 
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = "All Products";
 }
 
 <!DOCTYPE html>
@@ -15,6 +15,21 @@
 <body>
     <div class="container">
         <h2>Products</h2>
+
+        <form method="get" asp-action="AllProducts" class="form-inline mb-3">
+            <div class="form-group mr-2">
+                <input type="text" name="searchName" value="@Context.Request.Query["searchName"]" placeholder="Search by name" class="form-control" />
+            </div>
+            <div class="form-group mr-2">
+                <input type="number" name="searchPrice" value="@Context.Request.Query["searchPrice"]" placeholder="Search by price" class="form-control" step="0.01" />
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <div class="mb-3">
+            <a asp-action="WarehouseReport" class="btn btn-primary">Warehouse Report</a>
+        </div>
+
         <table class="table table-hover">
             <thead>
                 <tr>

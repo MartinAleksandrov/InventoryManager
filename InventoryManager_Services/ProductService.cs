@@ -76,9 +76,9 @@
             return viewModel;
         }
 
-        public async Task<IEnumerable<AllProductsViewModel>> GetAllProductsAsync()
+        public async Task<IEnumerable<AllProductsViewModel>> GetAllProductsAsync(string searchName, decimal? searchPrice)
         {
-            var allProducts = await dbContext
+            var products = await dbContext
                 .Products
                 .AsNoTracking()
                 .Select(p => new AllProductsViewModel()
@@ -91,7 +91,17 @@
                 })
                 .ToListAsync();
 
-            return allProducts;
+            if (!string.IsNullOrEmpty(searchName))
+            {
+                products = products.Where(p => p.Name.Contains(searchName, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (searchPrice.HasValue)
+            {
+                products = products.Where(p => p.Price == searchPrice.Value).ToList();
+            }
+
+            return products;
         }
 
         public async Task<bool> EditProductAsync(ProductViewModel viewModel)
@@ -124,8 +134,22 @@
 
             dbContext.Products.Remove(product);
             await dbContext.SaveChangesAsync();
-            
+
             return true;
+        }
+
+        public async Task<List<WarehouseReportViewModel>> GetWarehouseReportAsync()
+        {
+
+            var report = await dbContext.Products.Select(p => new WarehouseReportViewModel
+            {
+                Name = p.Name,
+                Count = p.Count,
+                Value = p.Price * p.Count,
+                Supplier = p.Supplier
+            }).ToListAsync();
+
+            return report;
         }
     }
 }

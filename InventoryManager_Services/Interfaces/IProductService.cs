@@ -5,7 +5,7 @@
 
     public interface IProductService
     {
-        Task<IEnumerable<AllProductsViewModel>> GetAllProductsAsync();
+        Task<IEnumerable<AllProductsViewModel>> GetAllProductsAsync(string searchName, decimal? searchPrice);
 
         Task<bool> AddProductAsync(AddProductViewModel product);
 
@@ -14,5 +14,8 @@
         Task<bool> EditProductAsync(ProductViewModel viewModel);
 
         Task<bool> DeleteProductAsync(string id);
+
+        Task<List<WarehouseReportViewModel>> GetWarehouseReportAsync();
+
     }
 }

@@ -11,8 +11,6 @@
 
         public DbSet<Product> Products { get; set; } = null!;
 
-        public DbSet<ProductManager> ProductManagers { get; set; } = null!;
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManager_Services",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManager_Data", "InventoryManager_Data\InventoryManager_Data.csproj", "{85B0CE55-A514-46F9-BC56-A6A2D9E502B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManager_Common", "InventoryManager_Common\InventoryManager_Common.csproj", "{E02F979C-76AD-4B5B-ABB7-001AF6F379F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManager_Common", "InventoryManager_Common\InventoryManager_Common.csproj", "{E02F979C-76AD-4B5B-ABB7-001AF6F379F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

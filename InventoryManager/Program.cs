@@ -1,10 +1,13 @@
 namespace InventoryManager
 {
+    using InventoryManager.ModelBinders;
     using InventoryManager_Data;
     using InventoryManager_Services;
     using InventoryManager_Services.Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Options;
+
     public class Program
     {
         public static void Main(string[] args)
@@ -16,7 +19,8 @@ namespace InventoryManager
 
             builder.Services.AddScoped<IProductService, ProductService>();
 
-            builder.Services.AddControllersWithViews(options => { options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); });
+            builder.Services.AddControllersWithViews(options => { options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); })
+                .AddMvcOptions(options => options.ModelBinderProviders.Insert(0,new DecimalModelBinderProvider()));
 
 
 

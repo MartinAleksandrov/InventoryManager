@@ -145,7 +145,7 @@
             {
                 Name = p.Name,
                 Count = p.Count,
-                Value = p.Price * p.Count,
+                Value = Math.Round((p.Price * p.Count),2),
                 Supplier = p.Supplier
             }).ToListAsync();
 

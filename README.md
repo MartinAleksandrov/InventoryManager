@@ -1,60 +1,56 @@
 # InventoryManager
 
+# InventoryManager Project Structure
+
+```plaintext
 InventoryManager/
 │
 ├── Controllers/
-│   └── HomeController.cs
+│   ├── HomeController.cs
 │   └── ProductController.cs
 │
 ├── ModelBinders/
-│   └── DecimalModelBinder.cs
+│   ├── DecimalModelBinder.cs
 │   └── DecimalModelBinderProvider.cs
 │
 ├── Views/
 │   └── Product/
-│       └── AllProducts.cshtml
-│       └── CreateProduct.cshtml
-│       └── EditProduct.cshtml
-│       └── DeleteProduct.cshtml
+│       ├── AllProducts.cshtml
+│       ├── CreateProduct.cshtml
+│       ├── EditProduct.cshtml
+│       ├── DeleteProduct.cshtml
 │       └── WarehouseReport.cshtml
 │
 ├── wwwroot/
-│   └── css/
-│       └── site.css
-│       └── warehouse-report.css
+│   ├── css/
+│   │   ├── site.css
+│   │   └── warehouse-report.css
 │   └── js/
 │       └── site.js
 │
 ├── Program.cs
-------------------------
-
-├── InventoryManager_Data
-│   └── Migrations/
-
-│   └── Models/
-│       └── Product.cs
 │
-│   └── ViewModels/
-│       └── AllProductsViewModel.cs
-│       └── AddProductViewModel.cs
-│       └── WarehouseReportViewModel.cs
-│       └── ProductViewModel.cs
-│       └── ErrorViewModel.cs
-│
+├── InventoryManager_Data/
+│   ├── Migrations/
+│   ├── Models/
+│   │   └── Product.cs
+│   ├── ViewModels/
+│   │   ├── AllProductsViewModel.cs
+│   │   ├── AddProductViewModel.cs
+│   │   ├── WarehouseReportViewModel.cs
+│   │   ├── ProductViewModel.cs
+│   │   └── ErrorViewModel.cs
 │   └── ApplicationDbContext.cs
-------------------------
-
-├── InventoryManager_Services
-│   └── Interfaces/
-│       └── IProductService.cs
 │
+├── InventoryManager_Services/
+│   ├── Interfaces/
+│   │   └── IProductService.cs
 │   └── ProductService.cs
-------------------------
+│
+└── InventoryManager_Common/
+    └── GlobalConstants/
+        └── ProductConstants.cs
 
-├── InventoryManager_Common
-│   └── GlobalConstants/
-│       └── ProductConstants.cs
-------------------------
 
 Features:
 Product Management: Add, edit, and delete products.
